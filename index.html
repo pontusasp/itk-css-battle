@@ -1,0 +1,109 @@
+<html>
+<head>
+</head>
+<body>
+    <div id="room">
+        <div id="chest">
+            <div class="front r"></div>
+            <div class="side g"></div>
+            <!-- <div class="top b"></div> -->
+        </div>
+    </div>
+    <style>
+
+        /*** COLORS ***/
+
+        .r {
+            background: #F005;
+        }
+
+        .g {
+            background: #0F05;
+        }
+
+        .b {
+            background: #00F5; 
+        }
+
+        .br {
+            background: #905D2D;
+        }
+
+        .bd {
+            background: #613F1E;
+        }
+
+        .d {
+            background: #242424;
+        }
+
+        .g {
+            background: #B5A38F;
+        }
+
+        .gd {
+            background: #94856C;
+        }
+
+        /*** BOXES ***/
+        
+        #room {
+            perspective: 30cm;
+
+        }
+        
+        #chest {
+            width: 250px;
+            height: 250px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-18deg) rotateY(-37.5deg) rotateZ(2deg) translateY(108px);
+                /* translateX(-25px) translateZ(0px); */
+
+            transition: all 1s;
+        }
+
+        #chest:hover {
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        }
+
+        .front {
+            width: 170px;
+            height: 116px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .side {
+            width: 250px;
+            height: 150px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            transform: translateX(-125px) rotateY(90deg);
+        }
+
+        .top {
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            transform: rotateX(90deg) translateZ(25px);
+        }
+
+    </style>
+
+    <!-- DELETE EVERYTHING BELOW BEFORE SUBMISSION -->
+
+    <!-- The image tag below is a transparent overlay meant to guide in recreation of the image, it will not count towards the submission and can safely be deleted -->
+    <img width=250 style="position:absolute;top:0;left:0;z-index:10000;opacity:0.15" src="https://iili.io/HNTeu1e.md.png" alt="HNTeu1e.md.png" border="0">
+    <br/>
+    <!-- The image tag below is just a reference image without transparency -->
+    <img width=250 style="position:absolute;top:270px;left:20px;z-index:10000;opacity:1" src="https://iili.io/HNTeu1e.md.png" alt="HNTeu1e.md.png" border="0">
+</body>
+</html>
