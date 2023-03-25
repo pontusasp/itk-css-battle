@@ -4,14 +4,18 @@
 <body>
     <div id="room">
         <div id="chest">
-            <div class="front r"></div>
-            <div class="side g"></div>
-            <!-- <div class="top b"></div> -->
+            <div class="front br o">front</div>
+            <div class="side br o">side</div>
+            <div class="top br o">top</div>
         </div>
     </div>
     <style>
 
         /*** COLORS ***/
+
+        .o {
+            border: 1px solid #000;
+        }
 
         .r {
             background: #F005;
@@ -47,8 +51,23 @@
 
         /*** BOXES ***/
         
+        :root {
+            --box-width: 53mm;
+            --box-height: 32mm;
+            --box-depth: 46mm;
+            --box-width-neg: calc(var(--box-width) * -1);
+            --box-height-neg: calc(var(--box-height) * -1);
+            --box-depth-neg: calc(var(--box-depth) * -1);
+            --box-width-half: calc(var(--box-width) / 2);
+            --box-height-half: calc(var(--box-height) / 2);
+            --box-depth-half: calc(var(--box-depth) / 2);
+            --box-width-half-neg: calc(var(--box-width-neg) / 2);
+            --box-height-half-neg: calc(var(--box-height-neg) / 2);
+            --box-depth-half-neg: calc(var(--box-depth-neg) / 2);
+        }
+        
         #room {
-            perspective: 30cm;
+            perspective: 20cm;
 
         }
         
@@ -57,7 +76,8 @@
             height: 250px;
             position: relative;
             transform-style: preserve-3d;
-            transform: rotateX(-18deg) rotateY(-37.5deg) rotateZ(2deg) translateY(108px);
+            transform: rotateX(-20deg) rotateY(-38deg) rotateZ(1deg)
+                translateX(-15mm) translateY(29mm);
                 /* translateX(-25px) translateZ(0px); */
 
             transition: all 1s;
@@ -68,32 +88,27 @@
         }
 
         .front {
-            width: 170px;
-            height: 116px;
+            width: var(--box-width);
+            height: var(--box-height);
             position: absolute;
-            top: 0;
-            left: 0;
             z-index: 1;
         }
 
         .side {
-            width: 250px;
-            height: 150px;
+            width: var(--box-depth);
+            height: var(--box-height);
             position: absolute;
-            top: 0;
-            left: 0;
+            position: absolute;
             z-index: 2;
-            transform: translateX(-125px) rotateY(90deg);
+            transform: translateX(calc(var(--box-height) - 2mm)) translateZ(var(--box-depth-half-neg)) rotateY(90deg);
         }
 
         .top {
-            width: 250px;
-            height: 250px;
+            width: var(--box-width);
+            height: var(--box-depth);
             position: absolute;
-            top: 0;
-            left: 0;
             z-index: 3;
-            transform: rotateX(90deg) translateZ(25px);
+            transform: rotateX(90deg) translateZ(var(--box-depth-half)) translateY(var(--box-depth-half-neg));
         }
 
     </style>
