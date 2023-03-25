@@ -4,13 +4,150 @@
 <body>
     <div id="room">
         <div id="chest">
-            <div class="front br o">front</div>
-            <div class="side br o">side</div>
-            <div class="top br o">top</div>
+            <div class="front br o">
+                <div class="lid-face gfd"></div>
+                <div class="lid-face-bot gf"></div>
+            </div>
+            <div class="side br o">
+                <div class="lid-face gsd"></div>
+                <div class="lid-face-bot gs"></div>
+            </div>
+            <div class="top br o">
+                <div class="lid-face"></div>
+            </div>
         </div>
     </div>
     <style>
+        /*** BOXES ***/
+        
+        :root {
+            --box-width: 53mm;
+            --box-height: 32mm;
+            --box-depth: 46mm;
+            --box-width-neg: calc(var(--box-width) * -1);
+            --box-height-neg: calc(var(--box-height) * -1);
+            --box-depth-neg: calc(var(--box-depth) * -1);
+            --box-width-half: calc(var(--box-width) / 2);
+            --box-height-half: calc(var(--box-height) / 2);
+            --box-depth-half: calc(var(--box-depth) / 2);
+            --box-width-half-neg: calc(var(--box-width-neg) / 2);
+            --box-height-half-neg: calc(var(--box-height-neg) / 2);
+            --box-depth-half-neg: calc(var(--box-depth-neg) / 2);
 
+            --box-lid-height: 6mm;
+            --box-lid-thickness: 1mm;
+        }
+        
+        #room {
+            perspective: 20cm;
+
+        }
+
+        #chest div {
+            transform-style: preserve-3d;
+        }
+        
+        #chest {
+            width: 250px;
+            height: 250px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(-38deg) rotateZ(1deg)
+                translateX(-15mm) translateY(29mm);
+                /* translateX(-25px) translateZ(0px); */
+
+            transition: all 1s;
+        }
+
+        #chest:hover {
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        }
+
+        .front {
+            width: var(--box-width);
+            height: var(--box-height);
+            position: absolute;
+            z-index: 1;
+        }
+        
+        .front .lid-face {
+            width: calc(var(--box-width) + var(--box-lid-thickness) * 2);
+            height: var(--box-lid-height);
+            transform: translateZ(var(--box-lid-thickness)) translateX(calc(var(--box-lid-thickness) * -1)) translateY(calc(var(--box-lid-thickness) * -1));
+            position: absolute;
+            z-index: 1;
+        }
+        
+        .front .lid-face-bot {
+            width: calc(var(--box-width) + var(--box-lid-thickness) * 2);
+            height: var(--box-lid-height);
+            transform: translateZ(var(--box-lid-thickness)) translateX(calc(var(--box-lid-thickness) * -1)) translateY(calc(var(--box-lid-thickness) * -1 + var(--box-lid-height)));
+            position: absolute;
+            z-index: 1;
+        }
+        
+        /* .front .lid-side {
+            width: var(--box-lid-thickness);
+            height: var(--box-lid-height);
+            transform: rotateY(90deg) translateZ(var(--box-width)) translateX(calc(var(--box-lid-thickness) * -1));
+            position: absolute;
+            z-index: 2;
+        } */
+        
+        .side {
+            width: var(--box-depth);
+            height: var(--box-height);
+            position: absolute;
+            position: absolute;
+            z-index: 2;
+            transform: translateX(calc(var(--box-height) - 2mm)) translateZ(var(--box-depth-half-neg)) rotateY(90deg);
+        }
+
+        .side .lid-face {
+            width: calc(var(--box-depth) + var(--box-lid-thickness) * 2);
+            height: var(--box-lid-height);
+            transform: translateZ(var(--box-lid-thickness)) translateX(calc(var(--box-lid-thickness) * -1)) translateY(calc(var(--box-lid-thickness) * -1));
+            position: absolute;
+            z-index: 1;
+        }
+
+        .side .lid-face-bot {
+            width: calc(var(--box-depth) + var(--box-lid-thickness) * 2);
+            height: var(--box-lid-height);
+            transform: translateZ(var(--box-lid-thickness)) translateX(calc(var(--box-lid-thickness) * -1)) translateY(calc(var(--box-lid-thickness) * -1 + var(--box-lid-height)));
+            position: absolute;
+            z-index: 1;
+        }
+
+        .top {
+            width: var(--box-width);
+            height: var(--box-depth);
+            position: absolute;
+            z-index: 3;
+            transform: rotateX(90deg) translateZ(var(--box-depth-half)) translateY(var(--box-depth-half-neg));
+        }
+
+        .top .lid-face {
+            width: calc(var(--box-width) + var(--box-lid-thickness) * 2);
+            height: calc(var(--box-depth) + var(--box-lid-thickness) * 2);
+            transform: translateZ(var(--box-lid-thickness)) translateX(calc(var(--box-lid-thickness) * -1)) translateY(calc(var(--box-lid-thickness) * -1));
+            position: absolute;
+            border : var(--box-lid-height) #E0CEB1 solid;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+    </style>
+
+    <!-- DELETE EVERYTHING BELOW BEFORE SUBMISSION -->
+
+    <!-- The image tag below is a transparent overlay meant to guide in recreation of the image, it will not count towards the submission and can safely be deleted -->
+    <img width=250 style="position:absolute;top:0;left:0;z-index:10000;opacity:0.15" src="https://iili.io/HNTeu1e.md.png" alt="HNTeu1e.md.png" border="0">
+    <br/>
+    <!-- The image tag below is just a reference image without transparency -->
+    <img width=250 style="position:absolute;top:270px;left:20px;z-index:10000;opacity:1" src="https://iili.io/HNTeu1e.md.png" alt="HNTeu1e.md.png" border="0">
+</body>
+<style>
         /*** COLORS ***/
 
         .o {
@@ -41,84 +178,21 @@
             background: #242424;
         }
 
-        .g {
+        .gf {
             background: #B5A38F;
         }
 
-        .gd {
+        .gfd {
             background: #94856C;
         }
 
-        /*** BOXES ***/
-        
-        :root {
-            --box-width: 53mm;
-            --box-height: 32mm;
-            --box-depth: 46mm;
-            --box-width-neg: calc(var(--box-width) * -1);
-            --box-height-neg: calc(var(--box-height) * -1);
-            --box-depth-neg: calc(var(--box-depth) * -1);
-            --box-width-half: calc(var(--box-width) / 2);
-            --box-height-half: calc(var(--box-height) / 2);
-            --box-depth-half: calc(var(--box-depth) / 2);
-            --box-width-half-neg: calc(var(--box-width-neg) / 2);
-            --box-height-half-neg: calc(var(--box-height-neg) / 2);
-            --box-depth-half-neg: calc(var(--box-depth-neg) / 2);
-        }
-        
-        #room {
-            perspective: 20cm;
-
-        }
-        
-        #chest {
-            width: 250px;
-            height: 250px;
-            position: relative;
-            transform-style: preserve-3d;
-            transform: rotateX(-20deg) rotateY(-38deg) rotateZ(1deg)
-                translateX(-15mm) translateY(29mm);
-                /* translateX(-25px) translateZ(0px); */
-
-            transition: all 1s;
+        .gs {
+            background: #66584C;
         }
 
-        #chest:hover {
-            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        .gsd {
+            background: #65503F;
         }
 
-        .front {
-            width: var(--box-width);
-            height: var(--box-height);
-            position: absolute;
-            z-index: 1;
-        }
-
-        .side {
-            width: var(--box-depth);
-            height: var(--box-height);
-            position: absolute;
-            position: absolute;
-            z-index: 2;
-            transform: translateX(calc(var(--box-height) - 2mm)) translateZ(var(--box-depth-half-neg)) rotateY(90deg);
-        }
-
-        .top {
-            width: var(--box-width);
-            height: var(--box-depth);
-            position: absolute;
-            z-index: 3;
-            transform: rotateX(90deg) translateZ(var(--box-depth-half)) translateY(var(--box-depth-half-neg));
-        }
-
-    </style>
-
-    <!-- DELETE EVERYTHING BELOW BEFORE SUBMISSION -->
-
-    <!-- The image tag below is a transparent overlay meant to guide in recreation of the image, it will not count towards the submission and can safely be deleted -->
-    <img width=250 style="position:absolute;top:0;left:0;z-index:10000;opacity:0.15" src="https://iili.io/HNTeu1e.md.png" alt="HNTeu1e.md.png" border="0">
-    <br/>
-    <!-- The image tag below is just a reference image without transparency -->
-    <img width=250 style="position:absolute;top:270px;left:20px;z-index:10000;opacity:1" src="https://iili.io/HNTeu1e.md.png" alt="HNTeu1e.md.png" border="0">
-</body>
+</style>
 </html>
