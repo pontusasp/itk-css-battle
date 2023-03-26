@@ -7,6 +7,11 @@
             <div class="front br o">
                 <div class="lid-face gfd"></div>
                 <div class="lid-face-bot gf"></div>
+                <div class="pillar-lift">
+                    <div class="pillar left gfd"></div>
+                    <div class="pillar mid gfd"></div>
+                    <div class="pillar right gfd"></div>
+                </div>
             </div>
             <div class="side br o">
                 <div class="lid-face gsd"></div>
@@ -14,6 +19,9 @@
             </div>
             <div class="top br o">
                 <div class="lid-face"></div>
+                <div class="lid-stripe f"></div>
+                <div class="lid-stripe"></div>
+                <div class="lid-stripe"></div>
             </div>
         </div>
     </div>
@@ -40,7 +48,6 @@
         
         #room {
             perspective: 20cm;
-
         }
 
         #chest div {
@@ -69,7 +76,7 @@
             position: absolute;
             z-index: 1;
         }
-        
+
         .front .lid-face {
             width: calc(var(--box-width) + var(--box-lid-thickness) * 2);
             height: var(--box-lid-height);
@@ -77,7 +84,7 @@
             position: absolute;
             z-index: 1;
         }
-        
+
         .front .lid-face-bot {
             width: calc(var(--box-width) + var(--box-lid-thickness) * 2);
             height: var(--box-lid-height);
@@ -85,7 +92,19 @@
             position: absolute;
             z-index: 1;
         }
-        
+
+        .front .pillar-lift {
+            transform: translateZ(calc(var(--box-lid-thickness) * 0.95));
+        }
+
+        .front .pillar {
+            width: 7mm;
+            height: var(--box-height);
+            /* transform: translateZ(var(--box-depth-half-neg)) translateY(calc(var(--box-height) / 2)); */
+            position: absolute;
+            z-index: 2;
+        }
+
         /* .front .lid-side {
             width: var(--box-lid-thickness);
             height: var(--box-lid-height);
@@ -93,7 +112,7 @@
             position: absolute;
             z-index: 2;
         } */
-        
+
         .side {
             width: var(--box-depth);
             height: var(--box-height);
@@ -135,6 +154,18 @@
             border : var(--box-lid-height) #E0CEB1 solid;
             box-sizing: border-box;
             z-index: 1;
+        }
+        
+        .top .lid-stripe.f {
+            margin-left: calc(var(--box-width) / 5);
+        }
+        
+        .top .lid-stripe {
+            background: #62401F;
+            height: var(--box-depth);
+            width: calc(var(--box-lid-thickness) * 2);
+            margin: 0 calc(var(--box-width) / 10);
+            float: left;
         }
 
     </style>
