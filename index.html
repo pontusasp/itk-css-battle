@@ -4,7 +4,7 @@
 <body>
     <div id="room">
         <div id="chest">
-            <div class="front br o">
+            <div class="front br">
                 <div class="lid-face gfd"></div>
                 <div class="lid-face-bot gf"></div>
                 <div class="pillar-lift">
@@ -12,12 +12,20 @@
                     <div class="pillar mid gfd"></div>
                     <div class="pillar right gfd"></div>
                 </div>
+                <div class="lock face">
+                    <div class="lock hole top"></div>
+                    <div class="lock hole bot"></div>
+                </div>
             </div>
-            <div class="side br o">
+            <div class="side br">
                 <div class="lid-face gsd"></div>
                 <div class="lid-face-bot gs"></div>
+                <div class="pillar-lift">
+                    <div class="pillar left gsd"></div>
+                    <div class="pillar right gsd"></div>
+                </div>
             </div>
-            <div class="top br o">
+            <div class="top br">
                 <div class="lid-face"></div>
                 <div class="lid-stripe f"></div>
                 <div class="lid-stripe"></div>
@@ -43,7 +51,12 @@
             --box-depth-half-neg: calc(var(--box-depth-neg) / 2);
 
             --box-lid-height: 6mm;
-            --box-lid-thickness: 1mm;
+            --box-lid-thickness: 1.5mm;
+            --box-pillar-width: 7mm;
+
+            --box-lock-width: 7mm;
+            --box-lock-height: 8mm;
+            --box-lock-hole: 3mm;
         }
         
         #room {
@@ -76,6 +89,34 @@
             position: absolute;
             z-index: 1;
         }
+        
+        .front .lock.face {
+            width: var(--box-lock-width);
+            height: var(--box-lock-height);
+            transform : translateZ(calc(var(--box-lid-thickness) * 2)) translateX(calc(var(--box-width) / 2 - var(--box-lock-width) / 2)) translateY(calc(var(--box-lid-height) / 12));
+            background: #807567;
+        }
+
+        .front .lock.hole {
+            position: absolute;
+        }
+        
+        .front .lock.hole.top {
+            width: var(--box-lock-hole);
+            height: var(--box-lock-hole);
+            background: #000;
+            border-radius: 50%;
+            transform: translateX(calc(var(--box-lock-width) / 2 - var(--box-lock-hole) / 2)) translateY(calc(var(--box-lock-height) / 2.5 - var(--box-lock-hole) / 2));
+        }
+
+        .front .lock.hole.bot {
+            width: 0;
+            height: 0;
+            border-left: calc(var(--box-lock-hole) / 2) solid transparent;
+            border-right: calc(var(--box-lock-hole) / 2) solid transparent;
+            border-bottom: var(--box-lock-hole) solid #000;
+            transform: translateX(calc(var(--box-lock-width) / 2 - var(--box-lock-hole) / 2)) translateY(calc(var(--box-lock-height) / 2.5 - var(--box-lock-hole) / 2 + var(--box-lock-hole) / 4 * 3));
+        }
 
         .front .lid-face {
             width: calc(var(--box-width) + var(--box-lid-thickness) * 2);
@@ -93,16 +134,32 @@
             z-index: 1;
         }
 
-        .front .pillar-lift {
+        .pillar-lift {
             transform: translateZ(calc(var(--box-lid-thickness) * 0.95));
         }
 
-        .front .pillar {
-            width: 7mm;
+        .pillar {
+            width: var(--box-pillar-width);
             height: var(--box-height);
             /* transform: translateZ(var(--box-depth-half-neg)) translateY(calc(var(--box-height) / 2)); */
             position: absolute;
             z-index: 2;
+        }
+        
+        .pillar.left {
+            transform: translateX(calc(var(--box-lid-thickness) * -0.95));
+        }
+        
+        .front .pillar.mid {
+            transform: translateX(calc(var(--box-width) / 2 - var(--box-pillar-width) / 2));
+        }
+        
+        .front .pillar.right {
+            transform: translateX(calc(var(--box-width) - var(--box-pillar-width) + var(--box-lid-thickness) * 0.95));
+        }
+
+        .side .pillar.right {
+            transform: translateX(calc(var(--box-depth) - var(--box-pillar-width) + var(--box-lid-thickness) * 0.95));
         }
 
         /* .front .lid-side {
@@ -173,10 +230,9 @@
     <!-- DELETE EVERYTHING BELOW BEFORE SUBMISSION -->
 
     <!-- The image tag below is a transparent overlay meant to guide in recreation of the image, it will not count towards the submission and can safely be deleted -->
-    <img width=250 style="position:absolute;top:0;left:0;z-index:10000;opacity:0.15" src="https://iili.io/HNTeu1e.md.png" alt="HNTeu1e.md.png" border="0">
-    <br/>
+    <!-- <img width=250 style="position:absolute;top:0;left:0;z-index:10000;opacity:0.15" src="https://iili.io/HNTeu1e.md.png" alt="HNTeu1e.md.png" border="0"> -->
     <!-- The image tag below is just a reference image without transparency -->
-    <img width=250 style="position:absolute;top:270px;left:20px;z-index:10000;opacity:1" src="https://iili.io/HNTeu1e.md.png" alt="HNTeu1e.md.png" border="0">
+    <img width=250 style="position:absolute;top:0px;left:300px;z-index:10000;opacity:1" src="https://iili.io/HNTeu1e.md.png" alt="HNTeu1e.md.png" border="0">
 </body>
 <style>
         /*** COLORS ***/
