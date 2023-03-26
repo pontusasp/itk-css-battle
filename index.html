@@ -9,7 +9,9 @@
                 <div class="lid-face-bot gf"></div>
                 <div class="pillar-lift">
                     <div class="pillar left gfd"></div>
+                    <div class="pillar left s gfd"></div>
                     <div class="pillar mid gfd"></div>
+                    <div class="pillar mid s gfd"></div>
                     <div class="pillar right gfd"></div>
                 </div>
                 <div class="lock face">
@@ -150,8 +152,19 @@
             transform: translateX(calc(var(--box-lid-thickness) * -0.95));
         }
         
+        .pillar.s {
+            background: #796957;
+            transform: rotateY(90deg) translateZ(2mm) translateX(calc(var(--box-pillar-width) / 2)); 
+        }
+        
         .front .pillar.mid {
             transform: translateX(calc(var(--box-width) / 2 - var(--box-pillar-width) / 2));
+        }
+        
+        .front .pillar.mid.s {
+            background: #796957;
+            position: absolute;
+            transform: rotateY(90deg) translateZ(26.5mm) translateX(calc(var(--box-pillar-width) / 2));
         }
         
         .front .pillar.right {
@@ -161,14 +174,6 @@
         .side .pillar.right {
             transform: translateX(calc(var(--box-depth) - var(--box-pillar-width) + var(--box-lid-thickness) * 0.95));
         }
-
-        /* .front .lid-side {
-            width: var(--box-lid-thickness);
-            height: var(--box-lid-height);
-            transform: rotateY(90deg) translateZ(var(--box-width)) translateX(calc(var(--box-lid-thickness) * -1));
-            position: absolute;
-            z-index: 2;
-        } */
 
         .side {
             width: var(--box-depth);
